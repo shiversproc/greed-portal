@@ -65,24 +65,10 @@ def main():
     # TODO: call analyze(symbol, period=period) and store the result
     result = analyze(symbol, period=period)
 
-    # TODO: print the formatted report
-    #       The result dict has these keys: name, symbol, sector, price,
-    #       market_cap, pe_ratio, week52_high, week52_low, rsi, sma20, sma50, signal
-
-    print(f"{'=' * 42}\n  {result['name']} ({result['symbol']})\n{'=' * 42}")
-    print(f"  Sector:       {result['sector']}")
-    print(f"  Price:        ${result['price']:.2f}")
-    print(f"  Market Cap:   ${result['market_cap']:.2f}T")
-    print(f"  P/E Ratio:    {result['pe_ratio']:.1f}")
-    print(f"  52W High:     ${result['week52_high']:.2f}")
-    print(f"  52W Low:      ${result['week52_low']:.2f}")
-    print(f"{'=' * 42}")
-    print(f"  RSI (14):     {result['rsi']:.2f}")
-    print(f"  SMA 20:       ${result['sma20']:.2f}")
-    print(f"  SMA 50:       ${result['sma50']:.2f}")
-    print(f"{'=' * 42}")
-    print(f"  Signal:       {result['signal']}")
-    print(f"{'=' * 42}")
+    print(f"{'=' * 42}\n  {result['Name']} ({result['Symbol']})\n{'=' * 42}")
+    for key, value in result.items():
+        print(f"  {key}: {value}")
+        print(f"{'=' * 42}\n")
 
 
 # This is standard Python boilerplate -- it means "only run main() if this file

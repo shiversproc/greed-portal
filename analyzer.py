@@ -31,7 +31,7 @@ def analyze(symbol, period="6mo"):
     info = get_info(symbol)
     df = get_price_history(symbol, period=period)
     df = add_all_indicators(df)
-
+    print(df.columns.tolist())
     # TODO: get the last row of df (call it 'latest')
     latest = df.iloc[-1]
     # TODO: get the RSI value from latest -- round it to 2 decimal places
@@ -42,7 +42,7 @@ def analyze(symbol, period="6mo"):
     # TODO: get sma50 from latest (key is "SMA_50")
     sma50 = round(float(latest.get("SMA_50", 0)), 2)
     # TODO: call generate_signal(rsi, sma20, sma50) to get the signal string
-    generate_signal(rsi, sma20, sma50)
+    signal = generate_signal(rsi, sma20, sma50)
     # TODO: return a dict with all relevent fields.
     analyzed = {
         "Symbol": info.get("symbol"),

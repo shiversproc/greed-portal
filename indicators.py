@@ -97,18 +97,8 @@ def bollinger_bands(df, window=20, num_std=2):
 
 
 def add_all_indicators(df):
-    """
-    Convenience function: adds all indicators to the DataFrame at once.
-    Call this when you want a fully loaded dataset ready to analyze.
-
-    """
-    #  call simple_moving_average with window=20
-    simple_moving_average(df, window=20)
-    #  call simple_moving_average with window=50
-    simple_moving_average(df, window=50)
-    #  call relative_strength_index
-    relative_strength_index(df)
-    #  call bollinger_bands
-    bollinger_bands(df)
-    #  return df
+    df = simple_moving_average(df, window=20)
+    df = simple_moving_average(df, window=50)
+    df = relative_strength_index(df)
+    df = bollinger_bands(df)
     return df
