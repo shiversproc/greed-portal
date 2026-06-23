@@ -1,5 +1,6 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
+
 
 # Helper functions
 def _clamp(value: float) -> float:
@@ -14,5 +15,10 @@ def _require_columns_(df: pd.DataFrame, cols: list[str], name: str) -> bool:
         return False
     return True
 
+
 # disposition effect
 def detect_dispoition_effect(df: pd.DataFrame) -> dict:
+
+    required = ["BB_lower", "BB_upper", "BB_middle", "Close", "Open"]
+    if not _require_columns_(df, required, "disposition effect"):
+        return {"score": None, "label": "N/A", "explanation": "Insufficient data."}
