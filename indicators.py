@@ -32,28 +32,7 @@ def simple_moving_average(df, window=20):
 
 
 def relative_strength_index(df, window=14):
-    """
-    Step 1 - Get daily price changes:
-        delta = df["Close"].diff()
-        GOOGLE: "pandas diff() method"
 
-    Step 2 - Split changes into gains and losses:
-        gain = delta.clip(lower=0)   # negative changes become 0
-        loss = -delta.clip(upper=0)  # positive changes become 0, then flip sign
-        GOOGLE: "pandas clip method"
-
-    Step 3 - Rolling average of gains and losses over the window:
-        avg_gain = gain.rolling(window=window).mean()
-        avg_loss = loss.rolling(window=window).mean()
-
-    Step 4 - Calculate Relative Strength:
-        rs = avg_gain / avg_loss
-
-    Step 5 - Convert to RSI scale (0-100):
-        RSI = 100 - (100 / (1 + rs))
-
-    Step 6 - Assign to df["RSI"] and return df.
-    """
     # TODO: copy df
     df = df.copy()
     # TODO: calculate delta (daily price changes)
