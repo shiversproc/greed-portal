@@ -22,3 +22,4 @@ def detect_dispoition_effect(df: pd.DataFrame) -> dict:
     required = ["BB_lower", "BB_upper", "BB_middle", "Close", "Open"]
     if not _require_columns_(df, required, "disposition effect"):
         return {"score": None, "label": "N/A", "explanation": "Insufficient data."}
+    else:
