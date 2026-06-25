@@ -8,7 +8,6 @@ Built to be continuously expanded.
 - Simple moving average (SMA 20, SMA 50) calculations
 - RSI (Relative Strength Index) with a basic buy/sell signal
 - CLI for quick terminal lookups
-- Web UI for a nicer view
 
 ## Setup
 

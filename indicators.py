@@ -1,15 +1,6 @@
 """
 indicators.py - Technical Indicators
 =====================================
-Functions that take a price DataFrame and return it with new columns added.
-These are the building blocks of technical analysis.
-
-All functions expect a pandas DataFrame with at least a 'Close' column
-(the format returned by fetch.get_price_history).
-
-GOOGLE TIP: "pandas DataFrame" -- the whole file revolves around this.
-Think of a DataFrame like a spreadsheet where each row is a day and
-each column is a piece of data (Open, High, Low, Close, Volume).
 """
 
 import pandas as pd
