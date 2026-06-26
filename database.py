@@ -14,19 +14,39 @@ def connect_db():
 
 
 table_statements = [
-
+    """CREATE TABLE IF NOT EXISTS Holdings (
+        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        ticker_symbol TEXT NOT NULL,
+        stock_name TEXT NOT NULL,
+        holding_amount INTEGER NOT NULL,
+        gains/losses INTEGER NOT NULL,
+        total_gains INTEGER NOT NULL,
+        RSI INTEGER NOT NULL,
+        SMA_20 INTEGER NOT NULL,
+        SMA_50 INTEGER NOT NULL,);
+        """,
+    """CREATE TABLE IF NOT EXISTS Indicators (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    ticker_symbol TEXT NOT NULL,
+    stock_name TEXT NOT NULL,
+    RSI INTEGER NOT NULL,
+    SMA_20 INTEGER NOT NULL,
+    SMA_50 INTEGER NOT NULL,
+    """
 ]
 
 
-def create_table (database, table_name):
+def create_table (database, statements=table_statements ):
 
     try:
         with sqlite3.connect(f"{database}") as conn:
             cursor = conn.cursor()
-            cursor.execute(f"{table_name}")
+            for statement in table_statements:
+                cursor.execute(statement)
             conn.commit()
+            print(f"Tables created")
             return
 
     except sqlite3.OperationalError as e:
-        print(e)
+        print("Failed to create tables.", e)
         return
